@@ -1,0 +1,117 @@
+🏆 Jogos Cooperativos — Instituto Teresina
+
+Sistema web interativo para gerenciamento de grupos, participantes, pontuações e cronômetro durante atividades de jogos cooperativos do Instituto Teresina.
+
+O projeto foi desenvolvido para facilitar a organização de dinâmicas em grupo, acompanhar o desempenho das equipes em tempo real e exibir o placar em uma tela de apresentação.
+
+✨ Funcionalidades
+👥 Gerenciamento de grupos: crie, renomeie, personalize as cores e remova grupos.
+🧑 Gerenciamento de participantes: adicione participantes às equipes e remova-os quando necessário.
+🏅 Sistema de pontuação: adicione ou desconte pontos individualmente de cada grupo.
+📊 Ranking automático: acompanhe a classificação das equipes conforme a pontuação.
+⏱️ Cronômetro interativo: configure o tempo, inicie, pause, pare e reinicie a contagem.
+🖥️ Modo apresentação: exiba o placar em tela cheia, com uma interface adaptada para projeções.
+💾 Salvamento automático: mantenha os dados salvos no armazenamento local do navegador.
+📂 Importação e exportação JSON: salve os dados em arquivo e carregue-os posteriormente.
+📄 Exportação CSV: exporte o placar e os participantes para uma planilha.
+🖨️ Impressão do placar: imprima uma versão simplificada dos resultados.
+🎨 Interface personalizada: layout colorido, cartões por equipe e design responsivo.
+♿ Acessibilidade básica: campos identificados, indicadores de foco e mensagens de status.
+🛠️ Tecnologias utilizadas
+HTML5: estrutura da aplicação.
+CSS3: estilização, responsividade, animações e modos de exibição.
+JavaScript: lógica do cronômetro, gerenciamento de dados, pontuação e interações.
+LocalStorage: persistência dos dados no navegador.
+Google Fonts: tipografia com as fontes Baloo 2 e Nunito.
+🚀 Como executar o projeto
+
+O sistema é uma aplicação web estática e não necessita de instalação de dependências ou de um servidor backend.
+
+Clone este repositório:
+git clone https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
+
+Entre na pasta do projeto:
+cd SEU-REPOSITORIO
+
+Abra o arquivo index.html em um navegador, como Google Chrome, Microsoft Edge ou Firefox.
+
+Alternativa: abra o projeto no Visual Studio Code e utilize a extensão Live Server para executar a aplicação em um servidor local.
+
+📖 Como utilizar
+1. Criar grupos
+Informe o nome da equipe.
+Escolha uma cor para identificá-la.
+Clique em Adicionar grupo.
+2. Cadastrar participantes
+Selecione o grupo desejado.
+Informe o nome do participante.
+Clique em Adicionar participante.
+3. Controlar a pontuação
+
+Utilize os botões de cada cartão para:
+
+Adicionar 1 ponto.
+Descontar 1 ponto.
+Adicionar 10 pontos.
+Informar uma quantidade personalizada de pontos.
+
+A pontuação não fica negativa.
+
+4. Configurar o cronômetro
+Defina os minutos e segundos.
+Clique em Definir tempo.
+Utilize os controles para iniciar, pausar, parar ou reiniciar a contagem.
+5. Exibir o ranking
+
+A classificação é atualizada automaticamente conforme os pontos das equipes são alterados.
+
+6. Salvar e exportar dados
+Salvar: exporta os dados para um arquivo JSON.
+Carregar arquivo: recupera dados de um arquivo JSON compatível.
+Exportar CSV: gera um arquivo que pode ser aberto em programas de planilhas.
+Imprimir placar: prepara uma versão para impressão.
+7. Utilizar o modo apresentação
+
+Clique em Tela de apresentação para destacar o cronômetro e os cartões dos grupos. Para voltar à interface de gerenciamento, utilize Tela de controle ou saia da tela cheia.
+
+💾 Armazenamento de dados
+
+O sistema utiliza o localStorage do navegador para salvar automaticamente os grupos, participantes, pontuações e informações do cronômetro.
+
+Importante: os dados ficam armazenados localmente no navegador utilizado. Eles não são sincronizados automaticamente entre computadores ou navegadores. Para transferir os dados ou manter uma cópia de segurança, utilize a opção Salvar e guarde o arquivo JSON exportado.
+
+📱 Responsividade
+
+A interface foi projetada para se adaptar a diferentes tamanhos de tela, incluindo:
+
+💻 Computadores e notebooks.
+📱 Smartphones.
+📲 Tablets.
+📽️ Telas de projeção e apresentações.
+🎯 Objetivo do projeto
+
+Oferecer uma ferramenta simples, visual e acessível para apoiar a realização de jogos cooperativos, atividades educacionais, dinâmicas em grupo e eventos do Instituto Teresina.
+
+A aplicação ajuda a organizar equipes, incentivar a participação e acompanhar os resultados de maneira prática e interativa.
+
+🔮 Possíveis melhorias futuras
+Histórico de rodadas e pontuações.
+Cadastro de diferentes modalidades de jogos.
+Relatórios detalhados por atividade.
+Compartilhamento de placares entre dispositivos.
+Armazenamento em banco de dados.
+Perfis de acesso para organizadores.
+Efeitos sonoros e alertas ao finalizar o cronômetro.
+🤝 Contribuição
+
+Sugestões e melhorias são bem-vindas!
+
+Faça um fork do repositório.
+Crie uma branch para sua alteração.
+Realize as modificações.
+Envie um pull request com a descrição das melhorias.
+📄 Licença
+
+A licença deste projeto ainda não foi definida. Caso deseje permitir o uso, a modificação e a distribuição do código por outras pessoas, considere adicionar uma licença apropriada, como a MIT, após definir os termos de utilização.
+
+Desenvolvido para apoiar os Jogos Cooperativos do Instituto Teresina. 💙💚💛

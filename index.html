@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jogos Cooperativos do Instituto Teresina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07111f;--panel:#101e31;--panel2:#16263c;--text:#f5f8ff;--muted:#b7c5da;--line:#2c405c;--blue:#1677ff;--green:#10b981;--red:#ef4444;--yellow:#facc15}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#132a4a 0,#07111f 58%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+header{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--line);background:#081321eF;position:sticky;top:0;z-index:5}
+h1{font-size:clamp(1.2rem,2vw,1.8rem);margin:0}.brand{display:flex;align-items:center;gap:12px}.brand span{font-size:2rem}
+button,input,select{font:inherit}button{cursor:pointer;border:1px solid #425875;border-radius:9px;padding:10px 13px;color:white;background:#1a2b43;font-weight:650}button:hover{filter:brightness(1.15)}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #67b7ff;outline-offset:2px}.primary{background:#0866e9;border-color:#3285ff}.good{background:#079b67;border-color:#25d99a}.warn{background:#e7a900;color:#111827;border-color:#ffd34d}.danger{background:#c9253b;border-color:#ff6577}.quiet{background:transparent}.top-actions{display:flex;gap:8px;flex-wrap:wrap}
+main{max-width:1600px;margin:auto;padding:18px}.timer-panel{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:18px;align-items:center;padding:20px;background:linear-gradient(120deg,#0b192a,#12223a);border:1px solid var(--line);border-radius:18px;margin-bottom:16px}.timer-label{font-size:1.2rem;font-weight:800}.timer-help{color:var(--muted)}.clock{text-align:center;font-size:clamp(3.8rem,10vw,8.5rem);line-height:1;font-weight:900;letter-spacing:.02em;font-variant-numeric:tabular-nums}.timer-controls{display:grid;gap:10px}.timer-buttons{display:flex;gap:8px;flex-wrap:wrap}.time-inputs{display:flex;gap:8px;align-items:center}.time-inputs input{width:80px}.field,input,select{background:#0b192a;color:white;border:1px solid #415875;border-radius:8px;padding:10px;min-width:0}.section-title{font-size:1.05rem;font-weight:800;margin:0 0 12px}.groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,265px),1fr));gap:13px}.group-card{--accent:#1677ff;background:linear-gradient(155deg,color-mix(in srgb,var(--accent) 85%,#07111f),color-mix(in srgb,var(--accent) 38%,#07111f));border:1px solid color-mix(in srgb,var(--accent) 75%,white);border-radius:15px;overflow:hidden;min-width:0;box-shadow:0 8px 25px #0002}.group-head{padding:13px 15px 4px;display:flex;gap:10px;align-items:center;justify-content:space-between}.group-name{font-size:1.25rem;font-weight:850;overflow-wrap:anywhere}.group-tools{display:flex;gap:5px}.group-tools button{padding:5px 8px;background:#06101b66}.score{text-align:center;font-size:clamp(3rem,6vw,5.3rem);font-weight:950;line-height:1.05;padding:6px 0 0;font-variant-numeric:tabular-nums}.points-label{text-align:center;margin-bottom:12px}.participants{background:#06101bbd;margin:0 10px 10px;border-radius:10px;padding:10px;min-height:95px}.participants-title{font-weight:750;border-bottom:1px solid #ffffff25;padding-bottom:7px;margin-bottom:4px}.participant{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid #ffffff1a}.participant:last-child{border:0}.participant span{overflow-wrap:anywhere}.participant button{padding:2px 7px;border:0;background:transparent;color:#ffb1b8}.score-actions{display:flex;gap:7px;padding:0 10px 11px}.score-actions button{flex:1;padding:10px 5px}.bottom-grid{display:grid;grid-template-columns:1.1fr 1.1fr 1fr;gap:13px;margin-top:16px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:15px;min-width:0}.form-row{display:flex;gap:8px;margin:9px 0}.form-row>*{flex:1}.color-picks{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}.color-picks button{width:27px;height:27px;border-radius:50%;padding:0;border:2px solid #ffffff77}.color-picks button.selected{outline:3px solid white;outline-offset:2px}.ranking{display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px solid var(--line)}.rank-num{color:#ffdf58;font-weight:900;width:30px}.dot{width:15px;height:15px;border-radius:50%;flex:none}.ranking-name{flex:1;overflow-wrap:anywhere}.empty{padding:35px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:14px}.status{text-align:center;color:var(--muted);font-size:.9rem;margin-top:12px}
+body.presentation header .brand{display:none}body.presentation header{justify-content:flex-end}body.presentation main{max-width:none;padding:clamp(10px,2vw,28px)}body.presentation .timer-panel{grid-template-columns:1fr 2fr 1fr;padding:clamp(12px,2vw,30px)}body.presentation .timer-label{font-size:clamp(1rem,2vw,1.7rem)}body.presentation .clock{font-size:clamp(5rem,14vw,13rem)}body.presentation .groups{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}body.presentation .group-name{font-size:clamp(1.2rem,2.3vw,2rem)}body.presentation .score{font-size:clamp(4rem,7vw,7rem)}body.presentation .group-tools,body.presentation .score-actions,body.presentation .bottom-grid,body.presentation .timer-help,body.presentation .timer-controls .time-inputs,body.presentation .timer-controls .timer-buttons{display:none}body.presentation .participants{min-height:0}body.presentation .participant button{display:none}body.presentation .timer-panel{margin-bottom:20px}body.presentation .points-label{font-size:1.15rem}
+@media(max-width:850px){header{position:static;align-items:flex-start;flex-direction:column}.timer-panel{grid-template-columns:1fr;text-align:center}.timer-controls{justify-items:center}.bottom-grid{grid-template-columns:1fr}.clock{font-size:5rem}.top-actions{width:100%}}
+@media print{header,.timer-controls,.bottom-grid,.group-tools,.score-actions{display:none!important}body{background:white;color:#111}.group-card{break-inside:avoid}.participants{background:#f4f4f4;color:#111}}
+
+/* ===== Tema Jogos Cooperativos ===== */
+:root{--bg:#081426;--panel:#10213a;--line:#2d4668;--teal:#14b8a6;--sun:#fbbf24;--coral:#fb7185}
+body{font-family:Nunito,system-ui,-apple-system,Segoe UI,sans-serif;background:
+radial-gradient(circle at 8% 12%,#14b8a62e 0,transparent 28%),radial-gradient(circle at 92% 8%,#fb718529 0,transparent 26%),radial-gradient(circle at 80% 85%,#fbbf2420 0,transparent 30%),linear-gradient(180deg,#0e2142,#081426 70%) fixed}
+.hero{position:relative;overflow:hidden;text-align:center;padding:clamp(22px,4vw,44px) 18px clamp(26px,4vw,48px);background:linear-gradient(115deg,#0d9488,#2563eb 55%,#7c3aed);color:#fff}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.hero::before{width:300px;height:300px;left:-90px;top:-130px;background:#ffffff1a}
+.hero::after{width:240px;height:240px;right:-70px;bottom:-130px;background:#fbbf2438}
+.hero>*{position:relative;z-index:1}
+.hero .badge{display:inline-block;font-weight:800;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;background:#ffffff2b;border:1px solid #ffffff55;padding:5px 14px;border-radius:99px}
+.hero h1{font-family:'Baloo 2',Nunito,system-ui,sans-serif;font-size:clamp(1.9rem,5.2vw,3.7rem);font-weight:800;line-height:1.05;margin:12px 0 6px;text-shadow:0 3px 14px #0004}
+.hero h1 em{font-style:normal;color:var(--sun)}
+.hero p{margin:0;font-size:clamp(.95rem,1.8vw,1.2rem);opacity:.95}
+.hero .hands{font-size:clamp(1.6rem,3vw,2.3rem);letter-spacing:.35em;margin-bottom:2px}
+.hero .strip{position:absolute;left:0;right:0;bottom:0;height:7px;z-index:2;background:linear-gradient(90deg,#1677ff 0 20%,#ef3340 0 40%,#10b981 0 60%,#facc15 0 80%,#9333ea 0)}
+header{justify-content:center;background:#0a1830e6;backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:11px 16px}
+header .brand{display:none}
+body.presentation header{justify-content:flex-end}
+button{border-radius:99px;padding:10px 16px;transition:transform .12s,filter .12s}
+button:hover{transform:translateY(-1px)}
+.primary{background:linear-gradient(135deg,#2563eb,#7c3aed);border-color:#8b9dff}
+.timer-panel{border-radius:24px;background:linear-gradient(120deg,#0f2342,#162c52);border:1px solid #3a5784;box-shadow:0 14px 40px #0006}
+.clock{background:linear-gradient(180deg,#fff,#a5d8ff);-webkit-background-clip:text;background-clip:text;color:transparent;font-family:'Baloo 2',Nunito,sans-serif}
+.section-title{font-family:'Baloo 2',Nunito,sans-serif;font-size:1.4rem;color:var(--sun)}
+.group-card{border-radius:22px;border-width:2px;box-shadow:0 12px 30px #0005;transition:transform .15s}
+.group-card:hover{transform:translateY(-3px)}
+.group-name{font-family:'Baloo 2',Nunito,sans-serif}
+.score{font-family:'Baloo 2',Nunito,sans-serif;text-shadow:0 4px 14px #0005}
+.participants{border-radius:14px}
+.panel{border-radius:20px;background:linear-gradient(160deg,#12264a,#0e1d38);box-shadow:0 8px 24px #0004}
+.empty{border-radius:20px}
+.footer{text-align:center;color:var(--muted);font-size:.85rem;padding:6px 0 26px}
+body.presentation .hero{padding:12px 16px 16px}body.presentation .hero p,body.presentation .hero .badge,body.presentation .hero .hands{display:none}body.presentation .hero h1{margin:0;font-size:clamp(1.4rem,3.2vw,2.6rem)}
+@media print{.hero{background:#fff!important;color:#111}.hero h1,.hero h1 em{color:#111;text-shadow:none}.hero .strip{display:block}}
+</style>
+</head>
+<body>
+<div class="hero"><div class="hands"></div><span class="badge">Instituto Teresina</span><h1>Jogos <em>Cooperativos</em><br>do Instituto Teresina</h1><p>Placar por Grupos</p><div class="strip"></div></div>
+<header><div class="brand"><span>🏆</span><h1>Placar por Grupos</h1></div><div class="top-actions"><button class="primary" id="presentationBtn">▣ Tela de apresentação</button><button id="controlBtn">⚙ Tela de controle</button><button id="saveBtn">💾 Salvar</button><button id="loadBtn">📂 Carregar arquivo</button><button class="danger" id="clearBtn">Limpar tudo</button></div></header>
+<main>
+<section class="timer-panel"><div><div class="timer-label">⏱ CRONÔMETRO</div><div class="timer-help">Configure o tempo e inicie a contagem.</div></div><div class="clock" id="clock">10:00</div><div class="timer-controls"><div class="timer-buttons"><button class="good" id="startBtn">▶ Iniciar</button><button class="warn" id="pauseBtn">Ⅱ Pausar</button><button class="danger" id="stopBtn">■ Parar</button></div><div class="time-inputs"><input id="minutes" type="number" min="0" max="999" value="10" aria-label="Minutos"><span>:</span><input id="seconds" type="number" min="0" max="59" value="0" aria-label="Segundos"><button id="setTimeBtn">Definir tempo</button><button id="resetBtn">↻ Reiniciar</button></div></div></section>
+<section><h2 class="section-title">Placar</h2><div class="groups" id="groups"></div><div class="empty" id="emptyState" hidden>Nenhum grupo ainda. Use “Adicionar grupo” abaixo para começar.</div></section>
+<section class="bottom-grid">
+<div class="panel"><h2 class="section-title">👥 Adicionar grupo</h2><form id="groupForm"><div class="form-row"><input id="groupName" placeholder="Nome do grupo (ex.: Grupo Azul)" required maxlength="80"></div><div class="color-picks" id="colorPicks"></div><button class="primary" type="submit">＋ Adicionar grupo</button></form></div>
+<div class="panel"><h2 class="section-title">🧑 Gerenciar participantes</h2><form id="participantForm"><div class="form-row"><select id="participantGroup" required><option value="">Selecione um grupo</option></select></div><div class="form-row"><input id="participantName" placeholder="Nome do participante" maxlength="80" required></div><button class="primary" type="submit">＋ Adicionar participante</button></form><p class="timer-help">Para remover alguém, use o × ao lado do nome no cartão do grupo.</p></div>
+<div class="panel"><h2 class="section-title">🏅 Ranking dos grupos</h2><div id="ranking"></div><div class="form-row"><button id="zeroPointsBtn">Zerar todos os pontos</button><button id="exportBtn">Exportar CSV</button></div><button id="printBtn">Imprimir placar</button></div>
+</section><div class="status" id="status" aria-live="polite">As alterações são salvas automaticamente neste navegador.</div>
+<div class="footer">Jogos Cooperativos · Instituto Teresina</div></main>
+<input type="file" id="fileInput" accept=".json,application/json" hidden>
+<script>
+(()=>{
+const $=id=>document.getElementById(id);
+const colors=['#1677ff','#ef3340','#10b981','#facc15','#9333ea','#f97316','#ec4899','#14b8a6','#64748b','#a3e635'];
+let groups=[],selectedColor=colors[0],remaining=600,initialTime=600,timerId=null,lastTick=0;
+const safe=(s)=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const status=s=>{$('status').textContent=s};
+function persist(){try{localStorage.setItem('placarGruposData',JSON.stringify({groups,remaining,initialTime,minutes:$('minutes').value,seconds:$('seconds').value}));}catch(e){status('Não foi possível salvar automaticamente neste navegador. Use Salvar para exportar.');}}
+function loadStored(){try{const d=JSON.parse(localStorage.getItem('placarGruposData')||'null');if(d){groups=Array.isArray(d.groups)?d.groups:[];remaining=Number.isFinite(d.remaining)?Math.max(0,d.remaining):600;initialTime=Number.isFinite(d.initialTime)?Math.max(0,d.initialTime):remaining;$('minutes').value=d.minutes??Math.floor(initialTime/60);$('seconds').value=d.seconds??initialTime%60;}}catch(e){}}
+function formatTime(n){n=Math.max(0,Math.floor(n));return String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0')}
+function drawClock(){ $('clock').textContent=formatTime(remaining); document.title=formatTime(remaining)+' · Jogos Cooperativos';}
+function stopTimer(){if(timerId){clearInterval(timerId);timerId=null}}
+function tick(){const now=Date.now();remaining-=Math.max(1,Math.round((now-lastTick)/1000));lastTick=now;if(remaining<=0){remaining=0;stopTimer();status('⏰ Tempo encerrado!');}drawClock();persist()}
+function startTimer(){if(remaining<=0){status('Defina ou reinicie o tempo antes de iniciar.');return}if(timerId)return;lastTick=Date.now();timerId=setInterval(tick,250);status('Cronômetro em andamento.')}
+function resetTimer(){stopTimer();remaining=initialTime;drawClock();persist();status('Cronômetro reiniciado.')}
+function drawColors(){$('colorPicks').innerHTML=colors.map(c=>`<button type="button" title="${c}" aria-label="Escolher cor ${c}" class="${c===selectedColor?'selected':''}" style="background:${c}" data-color="${c}"></button>`).join('');}
+function drawGroups(){
+const sorted=[...groups].sort((a,b)=>b.score-a.score);
+$('groups').innerHTML=groups.map(g=>`<article class="group-card" style="--accent:${g.color}"><div class="group-head"><div class="group-name">${safe(g.name)}</div><div class="group-tools"><button data-action="rename" data-id="${g.id}" title="Renomear grupo">✎</button><button data-action="color" data-id="${g.id}" title="Trocar cor">🎨</button><button data-action="removeGroup" data-id="${g.id}" title="Remover grupo">🗑</button></div></div><div class="score">${g.score}</div><div class="points-label">pontos</div><div class="participants"><div class="participants-title">👥 Participantes (${g.people.length})</div>${g.people.length?g.people.map((p,i)=>`<div class="participant"><span>${safe(p)}</span><button title="Remover ${safe(p)}" data-action="removePerson" data-id="${g.id}" data-index="${i}">×</button></div>`).join(''):'<span class="timer-help">Nenhum participante cadastrado.</span>'}</div><div class="score-actions"><button class="good" data-action="score" data-delta="1" data-id="${g.id}">+1</button><button class="danger" data-action="score" data-delta="-1" data-id="${g.id}">−1</button><button data-action="score" data-delta="10" data-id="${g.id}">+10</button><button data-action="custom" data-id="${g.id}">±</button></div></article>`).join('');
+$('emptyState').hidden=groups.length>0;
+$('participantGroup').innerHTML='<option value="">Selecione um grupo</option>'+groups.map(g=>`<option value="${g.id}">${safe(g.name)}</option>`).join('');
+$('ranking').innerHTML=sorted.length?sorted.map((g,i)=>`<div class="ranking"><span class="rank-num">${i+1}º</span><span class="dot" style="background:${g.color}"></span><span class="ranking-name">${safe(g.name)}</span><strong>${g.score}</strong></div>`).join(''):'<p class="timer-help">O ranking aparecerá quando você adicionar grupos.</p>';
+}
+$('colorPicks').addEventListener('click',e=>{const b=e.target.closest('[data-color]');if(b){selectedColor=b.dataset.color;drawColors()}});
+$('groupForm').addEventListener('submit',e=>{e.preventDefault();const name=$('groupName').value.trim();if(!name)return;groups.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()+Math.random()),name,color:selectedColor,score:0,people:[]});$('groupName').value='';selectedColor=colors[(groups.length)%colors.length];drawColors();drawGroups();persist();status('Grupo adicionado.')});
+$('participantForm').addEventListener('submit',e=>{e.preventDefault();const g=groups.find(x=>x.id===$('participantGroup').value),name=$('participantName').value.trim();if(!g||!name)return;g.people.push(name);$('participantName').value='';drawGroups();persist();status('Participante adicionado.')});
+$('groups').addEventListener('click',e=>{const b=e.target.closest('[data-action]');if(!b)return;const g=groups.find(x=>x.id===b.dataset.id);if(!g)return;switch(b.dataset.action){case'score':g.score=Math.max(0,g.score+Number(b.dataset.delta));break;case'custom':{const n=prompt('Quantos pontos deseja adicionar? Use um número negativo para descontar.','5');if(n===null||n.trim()===''||!Number.isFinite(Number(n)))return;g.score=Math.max(0,g.score+Math.trunc(Number(n)));break}case'rename':{const n=prompt('Novo nome do grupo:',g.name);if(n&&n.trim())g.name=n.trim().slice(0,80);break}case'color':{const i=colors.indexOf(g.color);g.color=colors[(i+1)%colors.length];break}case'removeGroup':if(!confirm(`Remover "${g.name}" e seus participantes?`))return;groups=groups.filter(x=>x.id!==g.id);break;case'removePerson':g.people.splice(Number(b.dataset.index),1);break}drawGroups();persist()});
+$('startBtn').onclick=startTimer;$('pauseBtn').onclick=()=>{stopTimer();persist();status('Cronômetro pausado.')};$('stopBtn').onclick=()=>{stopTimer();status('Cronômetro parado. Use Iniciar para continuar ou Reiniciar para voltar ao tempo inicial.')};
+$('setTimeBtn').onclick=()=>{const m=Math.max(0,Math.min(999,parseInt($('minutes').value,10)||0)),s=Math.max(0,Math.min(59,parseInt($('seconds').value,10)||0));$('minutes').value=m;$('seconds').value=s;stopTimer();initialTime=m*60+s;remaining=initialTime;drawClock();persist();status('Tempo definido.')};
+$('resetBtn').onclick=resetTimer;
+$('saveBtn').onclick=()=>{const blob=new Blob([JSON.stringify({groups,remaining,initialTime,minutes:$('minutes').value,seconds:$('seconds').value},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='placar-grupos.json';a.click();URL.revokeObjectURL(a.href);status('Arquivo de dados exportado.')};
+$('loadBtn').onclick=()=>$('fileInput').click();
+$('fileInput').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const d=JSON.parse(await f.text());if(!Array.isArray(d.groups))throw Error('Arquivo inválido');groups=d.groups.map(g=>({id:String(g.id||Date.now()+Math.random()),name:String(g.name||'Grupo'),color:colors.includes(g.color)?g.color:colors[0],score:Math.max(0,Number(g.score)||0),people:Array.isArray(g.people)?g.people.map(String):[]}));stopTimer();initialTime=Math.max(0,Number(d.initialTime)||0);remaining=Math.max(0,Number(d.remaining??initialTime));$('minutes').value=d.minutes??Math.floor(initialTime/60);$('seconds').value=d.seconds??initialTime%60;drawGroups();drawClock();persist();status('Arquivo carregado.')}catch(err){alert('Não foi possível carregar. Selecione um arquivo JSON exportado por este sistema.')}e.target.value=''});
+$('clearBtn').onclick=()=>{if(!confirm('Apagar todos os grupos, participantes, pontos e cronômetro?'))return;stopTimer();groups=[];remaining=600;initialTime=600;$('minutes').value=10;$('seconds').value=0;drawGroups();drawClock();persist();status('Placar limpo.')};
+$('zeroPointsBtn').onclick=()=>{if(confirm('Zerar a pontuação de todos os grupos?')){groups.forEach(g=>g.score=0);drawGroups();persist()}};
+$('exportBtn').onclick=()=>{const rows=[['Grupo','Pontos','Participantes'],...groups.map(g=>[g.name,g.score,g.people.join('; ')]),['Tempo restante',formatTime(remaining),'']];const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));a.download='placar-grupos.csv';a.click();URL.revokeObjectURL(a.href)};
+$('printBtn').onclick=()=>window.print();
+$('presentationBtn').onclick=()=>{document.body.classList.add('presentation');status('Modo apresentação ativado. Pressione Esc para sair da tela cheia.');if(document.documentElement.requestFullscreen)document.documentElement.requestFullscreen().catch(()=>{})};
+$('controlBtn').onclick=()=>{document.body.classList.remove('presentation');if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen().catch(()=>{});status('Modo controle ativado.')};
+document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement)document.body.classList.remove('presentation')});
+loadStored();drawColors();drawGroups();drawClock();
+})();
+</script>
+</body></html>
